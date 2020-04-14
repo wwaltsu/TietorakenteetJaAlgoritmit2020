@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.kmr;
+package defaultPackage;
 
 /**
  *
@@ -20,13 +20,13 @@ public class Menu {
 //printMenu alkaa------------------------------------------------------------------
     private static void printMenu() {
         char select;
-        Stack s = new Stack(); // pino-olio
-        String data; // Pinon data-kenttä
+        Jono s = new Jono(); // Jono-olio
+        String data; // Jono data-kenttä
         do {
 
             System.out.println("\n\t\t\t1. Alkion lisääminen.");
             System.out.println("\t\t\t2. Alkion poistaminen.");
-            System.out.println("\t\t\t3. Pinon sisältö.");
+            System.out.println("\t\t\t3. Jono sisältö.");
             System.out.println("\t\t\t4. Alkioiden lukumäärä.");
             System.out.println("\t\t\t5. lopetus ");
             System.out.print("\n\n"); // tehdään tyhjiä rivejä
@@ -40,7 +40,7 @@ public class Menu {
                 case '2':
                     ListItem item = s.pop();
                     if (item == null)
-                        System.out.println("Pino on tyhjä");
+                        System.out.println("Jono on tyhjä");
                     else
                         System.out.println("Poistettu alkio: "+item.getData());
                     break;

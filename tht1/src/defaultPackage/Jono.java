@@ -3,37 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.kmr;
+package defaultPackage;
 
 /**
  *
  * @author kamaj
  */
-public class Stack {
+public class Jono {
 
-    private ListItem top;
+    private ListItem huippu;
     private int size;
 
     // muodosta uusi lista-alkio ja vie se pinon huipulle
     public void push(String aData) {
         ListItem item = new ListItem();
         item.setData(aData);
-        if (top != null) {
-            ListItem last;
-            for (last = top; last.getNext() != null; last = last.getNext());
-            last.setNext(item);
+        if (huippu != null) {
+            ListItem temp = huippu;
+            huippu = item;
+            huippu.setNext(temp);
         } else {
-            top = item;
+            huippu = item;
         }
         size ++;
     }
     // poista ja palauta alkio pinon huipulta,
     // jos pino tyhjä palauta null
     public ListItem pop(){
-        if (top != null) {
+        if (huippu != null) {
             ListItem temp;
-            temp = top;
-            top = top.getNext();
+            temp = huippu;
+            huippu = huippu.getNext();
             size--;
             return temp;
         }
@@ -41,7 +41,7 @@ public class Stack {
     }
     // tulosta pinon sisältö muuttamatta pinoa
     public void printItems() {
-        ListItem temp = top;
+        ListItem temp = huippu;
         while( temp != null) {
             System.out.print(temp.getData()+ ", ");
             temp = temp.getNext();
