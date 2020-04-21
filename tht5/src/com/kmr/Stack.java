@@ -56,8 +56,7 @@ public class Stack {
             System.out.println("Pino on tyhjä");
         }
         ListIterator<String> iterator = linkedList.listIterator();
-        while (iterator.hasNext())
-            System.out.println(iterator.next());
+        while (iterator.hasNext()) System.out.println(iterator.next());
 
 
     }

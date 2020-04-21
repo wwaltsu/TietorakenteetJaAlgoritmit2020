@@ -28,8 +28,7 @@ public class Menu {
             System.out.println("\t\t\t2. Alkion poistaminen.");
             System.out.println("\t\t\t3. Pinon sisältö.");
             System.out.println("\t\t\t4. Alkioiden lukumäärä.");
-            System.out.println("\t\t\t5. Pinon sisältö iteraattorilla selattuna.");
-            System.out.println("\t\t\t6. lopetus ");
+            System.out.println("\t\t\t5. lopetus ");
             System.out.print("\n\n"); // tehdään tyhjiä rivejä
             select = Lue.merkki();
             switch (select) {
@@ -52,11 +51,6 @@ public class Menu {
                     System.out.println("Lukumäärä = " + s.getSize());
                     break;
                 case '5':
-                    StackIterator itr = s.iterator();
-                    while (itr.hasNext())
-                        System.out.println(itr.next().getData());
-                    break;
-                case '6':
                     break;
             }
         }
