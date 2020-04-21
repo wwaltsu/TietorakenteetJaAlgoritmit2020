@@ -13,7 +13,6 @@ interface Iterator {
     boolean hasNext();
     Object next();
 }
-
 public class StackIterator implements Iterator {
     private ListItem  current;
     private Stack container; // container on tietorakenne, jota iteroidaan
