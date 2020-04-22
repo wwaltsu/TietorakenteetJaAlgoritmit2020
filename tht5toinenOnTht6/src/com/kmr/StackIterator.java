@@ -5,6 +5,8 @@
  */
 package com.kmr;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author kamaj
@@ -14,26 +16,33 @@ interface Iterator {
     Object next();
 }
 public class StackIterator implements Iterator {
-    private ListItem  current;
     private Stack container; // container on tietorakenne, jota iteroidaan
+    private ArrayList arrayList;
+    private int lkm = 0;
 
     StackIterator (Stack c) { // konstruktori on "package visible"
         container = c;
-        current = container.top;
+        arrayList = container.array;
     }
     // palautetaan tieto siitä, löytyyko rakenteesta seuraava alkio
     // hmm... palautetaan tieto siitä, osoittaako nykypositio (current) alkiota vai ei.
     public boolean hasNext() {
-        if (current == null)
+        if (lkm == arrayList.size())
             return false;
         else
             return true;
     }
     // palautetaan nykyinen (lista-alkio) ja siirretään nykypositiota pykälä eteenpäin
     public ListItem next() {
-        ListItem oldCurrent = current;
-        current=current.getLink();
-        return oldCurrent;
+        ListItem current;
+        if (lkm < arrayList.size()) {
+            current = (ListItem) arrayList.get(lkm);
+            lkm++;
+        } else {
+            current = new ListItem();
+            lkm = 0;
+        }
+        return current;
     }
 
 }

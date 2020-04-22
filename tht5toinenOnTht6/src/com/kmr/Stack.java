@@ -5,62 +5,64 @@
  */
 package com.kmr;
 
-import java.util.LinkedList;
-import java.util.ListIterator;
+import java.util.ArrayList;
 
 /**
  * @author kamaj
  */
+
 public class Stack {
 
     ListItem top; // top näkyy oletuspakkaukseen
-    LinkedList<String> linkedList = new LinkedList<>();
-    private int size;
 
+    ArrayList<ListItem> array;
 
     public Stack() {
         top = null;
-        size = 0;
+        array = new ArrayList<ListItem>();
     }
-
     //  palautetaan pino-iteraattori
     public StackIterator iterator() {
         return new StackIterator(this);
     }
-
     // muodostetaan uusi alkio ja viedään se huipulle
     public void push(String aData) {
-        top = new ListItem();
-        top.setData(aData);
-        linkedList.add(aData);
-        size++;
-    }
+        ListItem element = new ListItem(); // luodaan uusi lista-alkio
+        element.setData(aData);
+        array.add(0, (element));
+        element.setLink(top); // kytketään uusi alkio aikaisempaan huippualkioon
+        top = element; // uusi alkio pinon 1:ksi
 
+    }
     // poistetaan alkio pinon huipulta, jos pinossa ei alkioita palautetaan null
     public ListItem pop() {
-        if (top == null) {
+        ListItem takeAway;
+        if (array.size() <= 0) { return null; // pino on tyhjä
         }
-        linkedList.removeLast();
-        size--;
-        return top;
+        else
+        {
+            takeAway = top;
+            top = top.getLink();
+            array.remove(0);
+        }
+        return takeAway;
     }
-
     // palautetaan pinottujen alkioiden lukumäärä
     public int getSize() {
-        return size;
+        return array.size();
     }
-
     // listataan sisältö
     public void printItems() {
-        if (top == null) {
-            System.out.println("Pino on tyhjä");
+        ListItem lPointer = top;
+        while (lPointer != null) {
+            System.out.print(lPointer.getData()+", ");
+            lPointer = lPointer.getLink();
         }
-        ListIterator<String> iterator = linkedList.listIterator();
-        while (iterator.hasNext()) System.out.println(iterator.next());
-
-
     }
 }
+
+
+
 
 
 
