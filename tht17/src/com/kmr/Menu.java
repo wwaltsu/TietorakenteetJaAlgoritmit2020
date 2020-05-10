@@ -5,6 +5,8 @@
 
 package com.kmr;
 
+import java.util.TreeSet;
+
 /**
  *
  * @author kamaj
@@ -20,40 +22,35 @@ public class Menu {
 //printMenu alkaa------------------------------------------------------------------
     private static void printMenu() {
         char select;
-        BinaryTree tree = new BinaryTree();
+        TreeSet<String> treeSet = new TreeSet<>();
         String data;
         do {
 
             System.out.println("\n\t\t\t1. Lisää avain.");
             System.out.println("\t\t\t2. Etsi avaimella.");
             System.out.println("\t\t\t3. Käy puu läpi esijärjestyksessä.");
-            System.out.println("\t\t\t4. lopetus ");
+            System.out.println("\t\t\t6. Lopeta");
             System.out.print("\n\n"); // tehdään tyhjiä rivejä
             select = Lue.merkki();
             switch (select) {
                 case '1':
                     System.out.println("Anna uusi avain (merkkijono)");
                     data = new String(Lue.rivi());
-                    tree.insert(data);
+                    treeSet.add(data);
                     break;
                 case '2':
                     System.out.println("Anna etsittävä avain (merkkijono)");
                     data = Lue.rivi();
-                    if (tree.find(data)!=null){
-                        System.out.println("Avain löytyi.");
-                    }
-                    else
-                        System.out.println("Avainta ei löytynyt.");
+                    System.out.println(treeSet.contains(data) ? "Avain löytyi.": "Avainta ei löytynyt.");
                     break;
                 case '3':
-                    tree.preOrder();
-                    char h = Lue.merkki(); // pysäytetään kontrolli
+                    for (String string : treeSet) System.out.println(string);
                     break;
-                case '4':
-                    break;
+
+
             }
         }
-        while (select != '4');
+        while (select != '6');
     }
 //printMenu loppuu ----------------------------------------------------------------
 }

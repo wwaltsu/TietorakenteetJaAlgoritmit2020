@@ -38,6 +38,9 @@ public class Node {
     public void setRight(BinaryTree tree) {
         right = tree;
     }
+    public void setData(String data) {
+        this.data = data;
+    }
 
 
 }
